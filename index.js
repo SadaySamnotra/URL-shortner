@@ -3,6 +3,9 @@ const express=require('express');
 const app = express();
 const urlRouter = require('./routes/urlRoute');
 
+app.set('view engine', 'pug');
+app.set('views','./views');
+
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
