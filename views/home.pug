@@ -1,11 +1,63 @@
 doctype html
 html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title URL-Shortner 
-    body 
-        h1 My first page.
-        main 
-            h2 This is the main part of my page.
-        
+  head
+    title URL Shortener
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css")
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        width: 400px;
+        text-align: center;
+      }
+      input[type="url"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+      button {
+        padding: 12px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      .short-url {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #333;
+      }
+  body
+    .container
+      h1 URL Shortener
+      p Enter a URL to generate a shortened link.
+      form(action="/url" method="POST")
+        input(type="url" name="url" placeholder="Enter URL" required)
+        button(type="submit") Shorten URL
+      if shortURL
+        .short-url
+          p Shortened URL:
+          a(href=shortURL)= shortURL
