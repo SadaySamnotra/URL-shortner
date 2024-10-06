@@ -6,8 +6,10 @@ router.post('/url',urlController.handleGenerateNewShortURL);
 router.get('/',(req,res)=>{
     res.render('home');
 })
+router.get('/url',urlController.handleAllURLS);
+
 router.get('/:shortID',urlController.handleRedirect);
 
-router.post('/analytics/:shortID',urlController.handleAnalytics);
+
 
 module.exports=router;

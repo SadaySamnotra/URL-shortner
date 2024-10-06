@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title URL Shortener - All URLs
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
+  body
+    div.container
+      h2.center-align URL Shortener - All URLs
+      table.striped.centered
+        thead
+          tr
+            th S.No
+            th Original URL
+            th Short URL
+            th Clicks
+        tbody
+          if result && result.length
+            each url, index in result
+              tr
+                td #{index + 1}
+                td #{url.redirectURL}
+                td 
+                  a(href=url.shortID target="_blank") #{url.shortID}
+                td #{url.clicks}
+                
+          else
+            tr
+              td(colspan="4") No URLs available
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
