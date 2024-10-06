@@ -32,16 +32,16 @@ const redirectPage= async (shortID)=>{
             await incrementVisit(shortID);
         }
     }catch(err){
-        console.err('Error in redirectPage: ',err);
+        console.error('Error in redirectPage: ',err);
     }
 };
 
 const incrementVisit = async(shortID)=>{
-    const result = await pool.query(`select clicks from visit_history where url_id= $1`,[shortID]);
-    console.log(result.rows[0]);
+    const result = await pool.query
+    (`select clicks from visit_history where url_id= $1`,[shortID]);
     let clicks = result.rows[0].clicks;
     clicks++;
-    await pool.query(`update visit_history set clicks = $1`,[clicks]);
+    await pool.query(`update visit_history set clicks = $1 where url_id=$2`,[clicks,shortID]);
     return clicks;
 }
 
