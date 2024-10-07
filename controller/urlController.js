@@ -6,10 +6,12 @@ async function handleGenerateNewShortURL(req,res){
     const {url}=req.body;
     if(!url) return res.status(400).json({error:"URL is needed"});
 
+    const createdBy=req.cookies.uid;
     const shortIDgen = shortid.generate(8);
     await URL.create({
         shortID:shortIDgen,
         redirectURL:url,
+        created_by:createdBy
     });
     return res.status(201).json({newURL:`http://localhost:5500/${shortIDgen}`});
 }
@@ -30,6 +32,8 @@ const handleAllURLS=async(req,res)=>{
     if(!result) return res.status(404).json({error:"Internal server error cannot fetch any urls at the moment"});
     res.render('urlTable',{result});
 };
+
+
 
 module.exports={
     handleGenerateNewShortURL,

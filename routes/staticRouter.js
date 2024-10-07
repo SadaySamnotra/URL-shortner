@@ -3,14 +3,17 @@ const URL = require('../model/urlModel');
 const router = express.Router();
 
 router.get('/',(req,res)=>{
-    res.render('home');
+    return res.render('home');
 })
 
-router.get('/register',(req,res)=>{
+router.get('/signup',(req,res)=>{
     return res.render('signup');
 });
 router.get('/login',(req,res)=>{
     return res.render('login');
 });
+router.get('/generateURL',(req,res)=>{
+    return res.render('generateURL');
+})
 
 module.exports=router;

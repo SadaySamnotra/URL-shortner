@@ -1,11 +1,11 @@
 const pool = require('../databasePG');
 
 const create = async(data)=>{
-    const{shortID, redirectURL}=data;
-    const values = [shortID,redirectURL];
+    const{shortID, redirectURL,created_by}=data;
+    const values = [shortID,redirectURL,created_by];
     const query=
-    `insert into urls("shortID", "redirectURL") 
-    values($1,$2) returning *`;
+    `insert into urls("shortID", "redirectURL",created_by) 
+    values($1,$2,$3) returning *`;
     
     const result = await pool.query(query,values);
     console.log(result);

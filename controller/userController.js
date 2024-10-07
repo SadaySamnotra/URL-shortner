@@ -24,7 +24,6 @@ const handleUserSignup= async(req,res)=>{
             });
             console.log('Password table entry done',passwordEntry);
         }
-        res.status(201).send('User created and password stored successfully');
     }catch(err){
         console.error(err);
     }
@@ -42,7 +41,7 @@ const handleUserLogin=async(req,res)=>{
     const sessionID = uuidv4();
     setUser(sessionID,user);
     res.cookie('uid',sessionID);
-    return res.redirect('/');
+    return res.redirect('/generateURL');
 };
 
 module.exports={
