@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+  head
+    title Generate Short URL
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/css/styles.css")
+  body
+    .container
+      h1 Generate Short URL
+      form(action="/url" method="POST")
+        input(type="url" name="url" placeholder="Enter URL" required)
+        button(type="submit") Shorten URL
+
+      // Add a link to view all created URLs
+      a(href="/url") View My URLs
