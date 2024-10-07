@@ -9,10 +9,20 @@ html(lang="en")
     .container
       h1 URL Shortener
       p Enter a URL to generate a shortened link.
+      
+      
       form(action="/url" method="POST")
         input(type="url" name="url" placeholder="Enter URL" required)
         button(type="submit") Shorten URL
+
       if shortURL
         .short-url
           p Shortened URL:
           a(href=shortURL)= shortURL
+      
+      .auth-section
+        h2 Welcome! Please Login or Register
+        p
+          a(href="/login") Login
+        p
+          a(href="/register") Register
